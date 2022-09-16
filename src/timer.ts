@@ -1,14 +1,10 @@
 import {LitElement, html, css} from 'lit';
-import {play, pause, replay} from '/tsc/icons.js';
+import {customElement, property, state} from 'lit/decorators';
+import {play, pause, replay} from './icons';
 
+@customElement("my-timer")
 export class Timer extends LitElement {
-
-  static properties = {
-    duration: {},
-    remaining: {state: true},
-    end: {state: true},
-  };
-
+  
   static styles = css`
     :host {
       display: inline-block;
@@ -17,22 +13,19 @@ export class Timer extends LitElement {
       padding: 0.2em;
       margin: 0.2em 0.1em;
     }
-
     footer {
       user-select: none;
       font-size: 0.6em;
     }
   `;
 
-  constructor() {
-    super();
-    this.duration = 60;
-    this.remaining = 0;
-    this.end = null;
-    this.msxSecond = 1000;
-    this.sxMinute = 60;
-    this.msxMinute = this.sxMinute * this.msxSecond;
-  }
+  @property() duration = 60;
+  @state() private end: number | null = null;
+  @state() private remaining = 0;
+  
+  msxSecond = 1000;
+  sxMinute = 60;
+  msxMinute = this.sxMinute * this.msxSecond;
 
   render() {
     const {remaining, running} = this;
@@ -55,7 +48,7 @@ export class Timer extends LitElement {
     `;
   }
 
-  pad(pad, val) {
+  pad(pad: unknown, val: number) {
     return pad ? String(val).padStart(2, '0') : val;
   }
 
@@ -76,7 +69,7 @@ export class Timer extends LitElement {
 
   tick() {
     if (this.running) {
-      this.remaining = Math.max(0, this.end - Date.now());
+      this.remaining = Math.max(0, this.end! - Date.now());
       requestAnimationFrame(() => this.tick());
     }
   }
