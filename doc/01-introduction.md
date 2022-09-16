@@ -14,9 +14,9 @@ backgroundImage: url('https://marp.app/assets/hero-background.svg')
 
 ![bg left:40% 60%](https://lit.dev/images/logo.svg)
 
-# **Lit**
+# **Introduction**
 
-A simple library for building fast, lightweight web components.
+_A simple library for building fast, lightweight web components_
 
 https://lit.dev
 
@@ -39,4 +39,23 @@ https://lit.dev
 
 # What is it like?
 
-http://localhost:8000/demo/
+http://localhost:8000/demo/hello-world.html
+http://localhost:8000/demo/timer.html
+
+Some notes:
+- LitElement main class to extend
+- Template tells how to render the timer
+- Reactive properties: public/internal state, re-render on any change
+- Styles scoped by default
+- Vanilla JavaScript
+- Not ready for production yet
+
+---
+
+# Why should I use it?
+
+- Simplified layer on top of web components
+    - Not a framework but a library
+- Fast rendering as only updates the dynamic parts related to the state change
+    - In contrast with a whole DOM update
+- It is small, in production it will take around 5KB
