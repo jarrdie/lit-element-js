@@ -19,13 +19,18 @@ export class Timer extends LitElement {
     }
   `;
 
-  @property() duration = 60;
-  @state() private end: number | null = null;
-  @state() private remaining = 0;
+  @property()
+  public duration = 60;
   
-  msxSecond = 1000;
-  sxMinute = 60;
-  msxMinute = this.sxMinute * this.msxSecond;
+  @state()
+  private end: number | null = null;
+
+  @state()
+  private remaining = 0;
+  
+  private readonly msxSecond = 1000;
+  private readonly sxMinute = 60;
+  private readonly msxMinute = this.sxMinute * this.msxSecond;
 
   render() {
     const {remaining, running} = this;
@@ -83,5 +88,3 @@ export class Timer extends LitElement {
     this.reset();
   }
 }
-
-customElements.define('lit-timer', Timer);
