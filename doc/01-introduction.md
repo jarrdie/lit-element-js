@@ -16,7 +16,7 @@ backgroundImage: url('https://marp.app/assets/hero-background.svg')
 
 # **Introduction**
 
-_A simple library for building fast, lightweight web components_
+*A simple library for building fast, lightweight web components*
 
 https://lit.dev
 
